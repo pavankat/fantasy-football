@@ -1,6 +1,7 @@
 var cheerio = require("cheerio");
 var Nightmare = require('nightmare');
 var pg = require('pg');
+var fs = require('fs'); //internal
 
 // Connection string to connect to our database
 var connectionString = "pg://localhost/fantasy_football";
@@ -58,23 +59,33 @@ var loopScrape = function(start, upTo, baseUrl) {
                 // console.log('***********************************');
 
                 for (key in players) {
-                    pg.connect(connectionString, function(err, client, done) {
-                        client.query('INSERT INTO mockdraftable_player_links (link, name, position, college, year) VALUES ($1, $2, $3, $4, $5) RETURNING id', [players[key].link, players[key].name, players[key].position, players[key].college, players[key].year], function(err, result) {
-
-                            if (err) console.log('error', err);
-
-                            done();
-                        });
+                    //convert object's values to array, join into a string separated by , and add a new line 
+                    fs.appendFile('skill-players.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
+                      if (err) {
+                        console.log('Some error occured - file either not saved or corrupted file saved.');
+                      } else{
+                        console.log('It\'s saved!');
+                      }
                     });
+
+                    //doesn't work 
+                        // pg.connect(connectionString, function(err, client, done) {
+                        //     client.query('INSERT INTO mockdraftable_player_links (link, name, position, college, year) VALUES ($1, $2, $3, $4, $5) RETURNING id', [players[key].link, players[key].name, players[key].position, players[key].college, players[key].year], function(err, result) {
+
+                        //         if (err) console.log('error', err);
+
+                        //         done();
+                        //     });
+                        // });
                 }
             });
     }
 }
 
 
-//done (I think) but I only have 515 in the database so I must be wrong
-    //qb
-    // loopScrape(1, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+//done in csv form definitely - in database it was wrong
+    //qb goes up to 17
+    //loopScrape(1, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
 
     //hb, fb, wr, te
     //goes up to 86

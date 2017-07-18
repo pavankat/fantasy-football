@@ -41,6 +41,19 @@ Marqise Lee - Jaguars
 leg blount
 dalvin cook
 
+did
+-----
+
+7-17-17: 
+
+I scraped in player links for qbs and offensive players (hbs, fbs, wrs, tes)
+
+I put the data into csvs and then I manually checked the data to see if there were any errors. I fixed 5 or so issues. Some of the data didn't exist on the site and some of the data got tampered when there was a Jr. on the name.
+
+I need to finish scraping the data for defense players and offensive line players
+
+Then I need to start scraping their individual information
+
 immediate to do 
 -----
 * might want to switch o line rankings to https://www.fantasypros.com/2017/07/nfl-offensive-line-rankings-and-fantasy-impact/ OR add that in with profootball to see which one is better
