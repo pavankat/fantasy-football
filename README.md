@@ -44,6 +44,10 @@ dalvin cook
 did
 -----
 
+7-18-17: 
+
+scraped dbs into csv, few more to go and then the harder part lol of getting the individual data for each person.
+
 7-17-17: 
 
 I scraped in player links for qbs and offensive players (hbs, fbs, wrs, tes)
