@@ -60,7 +60,7 @@ var loopScrape = function(start, upTo, baseUrl) {
 
                 for (key in players) {
                     //convert object's values to array, join into a string separated by , and add a new line 
-                    fs.appendFile('skill-players.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
+                    fs.appendFile('dbs.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
                       if (err) {
                         console.log('Some error occured - file either not saved or corrupted file saved.');
                       } else{
@@ -85,15 +85,16 @@ var loopScrape = function(start, upTo, baseUrl) {
 
 //done in csv form definitely - in database it was wrong
     //qb goes up to 17
-    //loopScrape(1, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+    //loopScrape(1, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
     //hb, fb, wr, te
     //goes up to 86
-    //loopScrape(81, 86, 'https://www.mockdraftable.com/search?position=BALL&beginYear=1999&endYear=2017&sort=DESC&page=')
+    //loopScrape(81, 86, 'https://www.mockdraftable.com/search?position=BALL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-// .then(function(result){
-//     // DB (cbs, safeties)
-//     return loopScrape(51, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
+    //DB (cbs, safeties)
+    //goes up to 51
+    //loopScrape(41, 51, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
+
 // }).then(function(result){ 
 //     // lbs (olb, ilb)
 //     return loopScrape(33, 'https://www.mockdraftable.com/search?position=LB&beginYear=1999&endYear=2017&sort=DESC&page=');
