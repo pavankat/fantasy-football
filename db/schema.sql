@@ -1,4 +1,4 @@
--- DROP TABLE IF EXISTS mockdraftable_player_links;
+DROP TABLE IF EXISTS mockdraftable_player_links;
 -- DROP TABLE IF EXISTS sauces;
 -- DROP TABLE IF EXISTS sauce_prices;
 -- DROP TABLE IF EXISTS customers;
@@ -7,6 +7,7 @@
 
 CREATE TABLE mockdraftable_player_links(
     id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
     link VARCHAR(255),
     position VARCHAR(255),
     college VARCHAR(255),

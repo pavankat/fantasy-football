@@ -47,10 +47,6 @@ immediate to do
 
 * be sure to import as 2017 data - have a year column for everything
 
-* implement promises with scrape.js
-
-* implement rate limiting with scrape.js
-
 * import mockdraftable player links
 
 * create teams table
