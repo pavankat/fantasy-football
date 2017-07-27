@@ -60,7 +60,7 @@ var loopScrape = function(start, upTo, baseUrl) {
 
                 for (key in players) {
                     //convert object's values to array, join into a string separated by , and add a new line 
-                    fs.appendFile('defensive_ends.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
+                    fs.appendFile('ol.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
                       if (err) {
                         console.log('Some error occured - file either not saved or corrupted file saved.');
                       } else{
@@ -100,17 +100,18 @@ var loopScrape = function(start, upTo, baseUrl) {
     //goes up to 33
     // loopScrape(31, 33, 'https://www.mockdraftable.com/search?position=LB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-    //weirdly enough have 1 defensive lineman:
+    //weirdly enough have 1 defensive lineman in there - there's only one listed as dl on the entire mockdraftable site
 
     //edge defenders (de) - defensive_ends.csv
     //goes up to 25
     // loopScrape(21, 25, 'https://www.mockdraftable.com/search?position=EDGE&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-//defensive tackles (dt) - ???.csv
-//goes up to 23
-// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=IDL&beginYear=1999&endYear=2017&sort=DESC&page=');
+    //defensive tackles (dt) - dts.csv
+    //goes up to 23
+    //loopScrape(21, 23, 'https://www.mockdraftable.com/search?position=IDL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-//ol (ot, og, oc) - ???.csv
-//goes up to 49
-// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=
-');
+// ol (ot, og, oc) - ???.csv
+// goes up to 49
+loopScrape(46, 49, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=');
+
+
