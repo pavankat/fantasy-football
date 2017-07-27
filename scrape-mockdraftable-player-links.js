@@ -60,7 +60,7 @@ var loopScrape = function(start, upTo, baseUrl) {
 
                 for (key in players) {
                     //convert object's values to array, join into a string separated by , and add a new line 
-                    fs.appendFile('line_backers.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
+                    fs.appendFile('defensive_ends.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
                       if (err) {
                         console.log('Some error occured - file either not saved or corrupted file saved.');
                       } else{
@@ -83,26 +83,36 @@ var loopScrape = function(start, upTo, baseUrl) {
 }
 
 
-//done in csv form definitely - in database it was wrong
-    //qb goes up to 17
+//done in csv form definitely works - in database it was wrong
+    //qb - qbs.csv
+    //goes up to 17 
     //loopScrape(1, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-    //hb, fb, wr, te
+    //hb, fb, wr, te - skill-players.csv
     //goes up to 86
     //loopScrape(81, 86, 'https://www.mockdraftable.com/search?position=BALL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-    //DB (cbs, safeties)
+    //DB (cbs, safeties) - dbs.csv
     //goes up to 51
     //loopScrape(41, 51, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-    //line backers (olbs, ilbs)
+    //line backers (olbs, ilbs) - line_backers.csv
     //goes up to 33
     // loopScrape(31, 33, 'https://www.mockdraftable.com/search?position=LB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-// }).then(function(result){ 
-//     // edge defenders (de)
-//     return loopScrape(25, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
-// }).then(function(result){ 
-//     // ol (ot, og, oc)
-//     return loopScrape(49, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
-// });
+    //weirdly enough have 1 defensive lineman:
+
+    //edge defenders (de) - defensive_ends.csv
+    //goes up to 25
+    // loopScrape(21, 25, 'https://www.mockdraftable.com/search?position=EDGE&beginYear=1999&endYear=2017&sort=DESC&page=');
+
+//might have duplicates - because I got de before in EDGE
+
+//defensive line (de, dt) - ???.csv
+//goes up to 47
+// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=DL&beginYear=1999&endYear=2017&sort=DESC&page=');
+
+//ol (ot, og, oc) - ???.csv
+//goes up to 49
+// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=
+');
