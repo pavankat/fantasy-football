@@ -60,7 +60,7 @@ var loopScrape = function(start, upTo, baseUrl) {
 
                 for (key in players) {
                     //convert object's values to array, join into a string separated by , and add a new line 
-                    fs.appendFile('dbs.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
+                    fs.appendFile('line_backers.csv', Object.values(players[key]).join(", ") + "\n", 'utf8', function (err) {
                       if (err) {
                         console.log('Some error occured - file either not saved or corrupted file saved.');
                       } else{
@@ -95,9 +95,10 @@ var loopScrape = function(start, upTo, baseUrl) {
     //goes up to 51
     //loopScrape(41, 51, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-// }).then(function(result){ 
-//     // lbs (olb, ilb)
-//     return loopScrape(33, 'https://www.mockdraftable.com/search?position=LB&beginYear=1999&endYear=2017&sort=DESC&page=');
+    //line backers (olbs, ilbs)
+    //goes up to 33
+    // loopScrape(31, 33, 'https://www.mockdraftable.com/search?position=LB&beginYear=1999&endYear=2017&sort=DESC&page=');
+
 // }).then(function(result){ 
 //     // edge defenders (de)
 //     return loopScrape(25, 'https://www.mockdraftable.com/search?position=DB&beginYear=1999&endYear=2017&sort=DESC&page=');
