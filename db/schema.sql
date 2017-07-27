@@ -14,6 +14,20 @@ CREATE TABLE mockdraftable_player_links(
     year INTEGER
 );
 
+-- INSERT INTO quarterbacks (player, team, comp, att, yards, tds, interceptions) VALUES (?, ?, ?, ?, ?, ?, ?)
+
+CREATE TABLE quarterbacks
+(
+	id SERIAL PRIMARY KEY,
+	player VARCHAR(255),
+	team VARCHAR(255),
+	comp VARCHAR(255),
+	att VARCHAR(255),
+	yards VARCHAR(255),
+	tds VARCHAR(255),
+	interceptions VARCHAR(255),
+);
+
 -- CREATE TABLE sauces(
 --     id SERIAL PRIMARY KEY,
 --     manufacturer_id INTEGER,

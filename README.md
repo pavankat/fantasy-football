@@ -44,6 +44,14 @@ dalvin cook
 did
 -----
 
+7-27-17:
+
+finished all the mockdraftable scraping
+
+I had to clean some of the csvs because if the player had Jr. it spilled into the next cell. But it went smooth overall.
+
+started to scrape nfl data on aggregate metrics on the season. I'm going to need to grab the page numbers, do rate limiting so I can grab all of the data on every page and then do it per year
+
 7-18-17: 
 
 scraped dbs into csv, few more to go and then the harder part lol of getting the individual data for each person.
@@ -64,15 +72,13 @@ immediate to do
 
 * be sure to import as 2017 data - have a year column for everything
 
-* import mockdraftable player links
-
 * create teams table
 
 * import nfl-schedule-2017.csv
 
 * import offense-rankings.csv
 
-* delete duplicate games in nfl-schedule-2017 table
+* delete duplicate games in nfl-schedule-2017 table and in other tables
 
 * need to use the schedule to really deep dive into who the weekly winners are and if there's a streak of having a really good opportunity (ex. weeks 1-6 use ameer abdullah and then it's downhill for him so trade him away then)
 
