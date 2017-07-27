@@ -110,8 +110,8 @@ var loopScrape = function(start, upTo, baseUrl) {
     //goes up to 23
     //loopScrape(21, 23, 'https://www.mockdraftable.com/search?position=IDL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-// ol (ot, og, oc) - ???.csv
-// goes up to 49
-loopScrape(46, 49, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=');
+    // ol (ot, og, oc) - ???.csv
+    // goes up to 49
+    //loopScrape(46, 49, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
 
