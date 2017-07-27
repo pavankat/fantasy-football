@@ -106,11 +106,9 @@ var loopScrape = function(start, upTo, baseUrl) {
     //goes up to 25
     // loopScrape(21, 25, 'https://www.mockdraftable.com/search?position=EDGE&beginYear=1999&endYear=2017&sort=DESC&page=');
 
-//might have duplicates - because I got de before in EDGE
-
-//defensive line (de, dt) - ???.csv
-//goes up to 47
-// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=DL&beginYear=1999&endYear=2017&sort=DESC&page=');
+//defensive tackles (dt) - ???.csv
+//goes up to 23
+// loopScrape(1, 5, 'https://www.mockdraftable.com/search?position=IDL&beginYear=1999&endYear=2017&sort=DESC&page=');
 
 //ol (ot, og, oc) - ???.csv
 //goes up to 49
