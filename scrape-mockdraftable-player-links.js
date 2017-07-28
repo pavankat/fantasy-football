@@ -24,8 +24,6 @@ var fs = require('fs'); //internal
 // Connection string to connect to our database
 var connectionString = "pg://localhost/fantasy_football";
 
-var pg = require('pg');
-
 var loopScrape = function(start, upTo, baseUrl) {
     for (var i = start; i <= upTo; i++) {
         var scrape = new Nightmare({
