@@ -12,6 +12,7 @@
     "cheerio": "1.0.0-rc.2",
     "nightmare": "2.10.0",
     "pg": "4.4.0",
-    "request": "^2.81.0"
+    "request": "^2.81.0",
+    "simple-rate-limiter": "^0.2.3"
   }
 }
