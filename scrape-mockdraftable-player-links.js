@@ -1,3 +1,21 @@
+/*
+    This scrapes data from mockdraftable and puts the data into csvs
+
+    I ran each loopScrape 5 at a time 
+    so 
+    loopScrape(1, 5, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+
+    loopScrape(6, 10, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+
+    loopScrape(11, 15, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+
+    loopScrape(16, 17, 'https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=')
+
+    how did I know to stop at 17? I went to the website and guessed to get to the last one. It's pretty easy, guess in increments of 10 and then as soon as you go too far, go back in 5 and up until you know what the last one is
+
+    you have to change the file name that the loopScrape function appends to for each scrape
+*/
+
 var cheerio = require("cheerio");
 var Nightmare = require('nightmare');
 var pg = require('pg');
@@ -113,5 +131,3 @@ var loopScrape = function(start, upTo, baseUrl) {
     // ol (ot, og, oc) - ???.csv
     // goes up to 49
     //loopScrape(46, 49, 'https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=');
-
-
