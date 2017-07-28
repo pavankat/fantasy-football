@@ -18,6 +18,10 @@
 	# 	https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=49
 
 # to do
+	# https://www.playerprofiler.com/nfl/ty-montgomery/
+
+		# additional metrics per player
+
 	# team rushing stats
 		# http://www.nfl.com/stats/categorystats?archive=false&conference=null&role=TM&offensiveStatisticCategory=RUSHING&defensiveStatisticCategory=null&season=2016&seasonType=REG&tabSeq=2&qualified=false&Submit=Go
 	# team offensive line stats
