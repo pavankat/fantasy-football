@@ -18,6 +18,11 @@
 	# 	https://www.mockdraftable.com/search?position=OL&beginYear=1999&endYear=2017&sort=DESC&page=49
 
 # to do
+	# team rushing stats
+		# http://www.nfl.com/stats/categorystats?archive=false&conference=null&role=TM&offensiveStatisticCategory=RUSHING&defensiveStatisticCategory=null&season=2016&seasonType=REG&tabSeq=2&qualified=false&Submit=Go
+	# team offensive line stats
+		# http://www.nfl.com/stats/categorystats?seasonType=REG&offensiveStatisticCategory=OFFENSIVE_LINE&d-447263-n=1&d-447263-o=1&d-447263-p=1&d-447263-s=PASSING_QBHIT&tabSeq=2&season=2016&role=TM&Submit=Go&archive=false&conference=null&defensiveStatisticCategory=null&qualified=false
+
 	# https://athlonsports.com/nfl/nfl-offensive-linemen-rankings
 	
 	# depth charts
