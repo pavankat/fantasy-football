@@ -1,6 +1,16 @@
 # Implemented three scraping techniques:
 
-### 1. cool way
+### 1. 
+
+* nightmare.js - headless browser to tackle content loaded in via js (curl or request are both too primitive to handle this)
+* bash script - runs the node file (containing the nightmare code) while passing in an incrementing value every 10 seconds
+* cheerio - to parse the html returned from nightmare
+
+at first glance, the bash script looks unnecessary, but debugging bad responses within loops of setTimeouts and promises is very tricky
+
+in practice, headless browser scraping works well on one page, but that's not easy when you are scraping thousands of pages. Unless, you write a simple shell script.
+
+### 2. cool way
 
 * nightmare.js - headless browser to tackle content loaded in via js
 * cheerio - to parse the html returned from nightmare
@@ -17,7 +27,7 @@ copy and paste content into excel
 
 manually create a csv file (ex. offense-rankings.csv)
 
-it might have been faster to implement a nightmare script for num 2 and 3 but whatev
+it might have been faster to implement a nightmare script for num 2 and 3
 
 # current formulas
 
@@ -29,20 +39,41 @@ running backs:
 
 # Steals I think
 
-hunter henry		
+hunter henry	
+
 zach ertz
 
+kelvin benjamin
+
 john brown	
-cameron merideth		
+
+cameron merideth
+
 Tyrell Williams - Los Angeles Chargers	
+
 Marquise Goodwin - San Francisco 49ers
+
 Marqise Lee - Jaguars
 
+ty montgomery
+
 leg blount
+
 dalvin cook
 
 did
 -----
+7-27-17:
+
+got all the page numbers for each nfl link
+
+wrote a shell script to run a node cmd and pass in an incrementing value 435 times
+
+that was easier than getting all the promises and setTimeouts to work. 
+
+started using excel to get rid of duplicates in schedule csv but it was off 
+
+started a jupyter notebook with pandas to get rid of duplicates, I put in my comments on how to continue at the end of the notebook
 
 7-27-17:
 
