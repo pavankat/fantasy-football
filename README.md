@@ -63,7 +63,7 @@ dalvin cook
 
 did
 -----
-7-27-17:
+7-28-17:
 
 got all the page numbers for each nfl link
 
