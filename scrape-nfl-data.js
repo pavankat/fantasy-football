@@ -3,6 +3,29 @@ var cheerio = require('cheerio')
 var fs = require('fs'); //internal
 var Nightmare = require('nightmare');
 
+/*
+var categ = ['PASSING', 'RUSHING', 'RECEIVING', 'KICKING', 'FIELD_GOALS', 'KICK_RETURNS', 'PUNTING', 'SACKS', 'TACKLES'];
+  
+//did this to create the object
+  var categOb = {}
+  for (var i=0;i<categ.length;i++){
+     categOb[categ[i]] = `${categ[i].toLowerCase()}.csv`
+  }
+
+*/
+
+var categOb = {
+  PASSING: "passing.csv",
+  RUSHING: "rushing.csv",
+  RECEIVING: "receiving.csv",
+  KICKING: "kicking.csv",
+  FIELD_GOALS: "field_goals.csv",
+  KICK_RETURNS: "kick_returns.csv",
+  PUNTING: "punting.csv",
+  SACKS: "sacks.csv",
+  TACKLES: "tackles.csv"
+}
+
 var data = [
   {
     "url": "http://www.nfl.com/stats/categorystats?tabSeq=0&season=2016&seasonType=REG&d-447263-n=2&d-447263-o=2&statisticCategory=PASSING&conference=null&d-447263-p=1",
@@ -10877,6 +10900,11 @@ var data = [
   }
 ];
 
+//use this when I turn off the scrape and need to turn it back on and edit what number to start off with in the shell script
+  // for (var i=0; i<data.length; i++){
+  //   if (data[i].url == 'http://www.nfl.com/stats/categorystats?tabSeq=0&season=2011&seasonType=PRE&d-447263-n=2&d-447263-o=2&statisticCategory=TACKLES&conference=null&d-447263-p=9') console.log(i)
+  // }
+
 var arg = process.argv[2];
 
 scrape(data[parseInt(arg)]);
@@ -10902,8 +10930,6 @@ function scrape(urlOb){
 
         var tableRows = $('tr')
 
-        //Player, Team, Comp, Att, Yards, Tds, interceptions
-
         //skip first row
         tableRows.slice(1).each(function(i, element) {
             var cleanRow = [];
@@ -10919,9 +10945,11 @@ function scrape(urlOb){
               cleanRow.push(val);
             });
 
-            var str = `"${cleanRow.join(',')}",${urlOb.year},${urlOb.seasonType},${urlOb.category},${lastPage}`;
+            var str = `${cleanRow.join(',')},${urlOb.url},${urlOb.year},${urlOb.season_type},${urlOb.category},${urlOb.last_page}`;
 
-            fs.appendFile('nfl-player-stats-final.csv', str + "\n", 'utf8', function (err) {
+            var fileToAppendTo = categOb[urlOb.category];
+
+            fs.appendFile(fileToAppendTo, str + "\n", 'utf8', function (err) {
               if (err) {
                 console.log('Some error occured - file either not saved or corrupted file saved.');
               } else{

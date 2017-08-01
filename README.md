@@ -1,33 +1,30 @@
 # Implemented three scraping techniques:
 
-### 1. 
+### 1. close to automated
 
-* nightmare.js - headless browser to tackle content loaded in via js (curl or request are both too primitive to handle this)
-* bash script - runs the node file (containing the nightmare code) while passing in an incrementing value every 10 seconds
+* used the fs node package to create a csv of urls to scrape based on data on the page
+* used http://www.csvjson.com/csv2json to convert the csv to a json array of objects that I use in the nightmare.js script 
+* nightmare.js - headless browser to tackle content loaded in via js
+	* curl and request are both primitive and won't handle content loaded in via ajax
+* bash script - runs the nightmare js script while passing in an incrementing value every 10 seconds
 * cheerio - to parse the html returned from nightmare
 
-at first glance, the bash script looks unnecessary, but debugging bad responses within loops of setTimeouts and promises is very tricky
+creating a csv of urls looks unnecessary, but it's easier to debug what url failed when all your urls that you're scraping are in order and you can reference them by their index number.
+
+the bash script looks unnecessary, but debugging bad responses within loops of setTimeouts and promises is very tricky and a waste of time.
 
 in practice, headless browser scraping works well on one page, but that's not easy when you are scraping thousands of pages. Unless, you write a simple shell script.
 
-### 2. cool way
+### 2. kind of automated
 
-* nightmare.js - headless browser to tackle content loaded in via js
-* cheerio - to parse the html returned from nightmare
+1. copy and paste content into excel 
+2. split the data on delimiters using text to columns 
+3. select content and transpose it
+4. manually join each team's schedule via cut and paste in excel
 
-### 2. not cool way
-
-copy and paste content into excel 
-
-1. split the data on delimiters using text to columns 
-2. select content and transpose it
-3. manually join each team's schedule via cut and paste in excel
-
-### 3. really not cool way
+### 3. manual
 
 manually create a csv file (ex. offense-rankings.csv)
-
-it might have been faster to implement a nightmare script for num 2 and 3
 
 # current formulas
 
@@ -63,6 +60,18 @@ dalvin cook
 
 did
 -----
+8-1-17:
+
+organized folder structure. 
+
+finished new nfl schedule scraper. Currently scraping in data.
+
+7-30-17:
+
+scraping in all of the nfl data. Somehow i'm missing 2016 rushing data. Should be interesting to see what I messed up haha.
+
+A lot of the data scraped in, but i'm not sure where it failed. It went really far. Immediately I need to 2017 and 2016 data immediately so I'll priortize that.
+
 7-28-17:
 
 got all the page numbers for each nfl link

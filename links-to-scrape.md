@@ -1,3 +1,37 @@
+questions
+
+out of the wrs,rbs,tes,qbs on the team whose the best in each measurable?
+	* might need to grab data from http://www.nfldraftscout.com/ratings/dsprofile.php?pyid=105577&draftyear=2014&genpos=TE by going to google, googling the player's name position nfldraftscout, clicking the first link, scraping the relative data
+
+what's the best ever a first year te has done? second year? third year? How often has that happened
+
+How often does someone go from first round to 2nd round? 1st to 3rd? 1st to 4th?...
+
+* does new coach mean bad season?
+
+* does new coach previous year mean good season?
+
+* how well does fantasypros, espn, etc do in prediction of stats and rankings?
+	* https://www.fantasypros.com/nfl/projections/rb.php?week=draft&year=2016
+	* https://www.fantasypros.com/nfl/stats/leaders.php
+	* if I pick hopkins first round because of ranking and he ends up wr40 then that's awful. I want measurement like that
+
+* predicting which kicker and defense will score a lot could give huge edge because no one does any of that analysis:
+	* kickers vs defense, offensive line, offense rankings
+	* defense vs offense, defense and offensive line rankings
+
+* home vs away? which players are best at home, best away? worst away? worst home?
+
+* how do the top 25 of each category do in each 4 week period (without including their bye weeks)
+
+* what's the combination of stats a wide receiver and a qb both have to have to do well? height? vertical jump? Does having a top dimension help?
+
+* if rb is bad, what's the chance wr is good? qb good? te good? kicker good? def good?
+	* if wrs bad, what's the chance rb is good? qb good? te good? kicker good? def good?
+	* if qb bad, what's the chance wrs are good? rbs good? te good? kicker good? def good?
+
+seems like an obvious answer, but TE could have 12 tds and qb can have 15 tds in total, and wrs can suck and rb can have 10 tds. So bad qb, bad wrs means good TE and rb op. Just an example, I don't know what the answer is.
+
 # DONE
 	# qbs
 	# https:/www.mockdraftable.com/search?position=QB&beginYear=1999&endYear=2017&sort=DESC&page=17

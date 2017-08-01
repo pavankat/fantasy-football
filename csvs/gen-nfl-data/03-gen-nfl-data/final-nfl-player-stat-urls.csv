@@ -1,3 +1,4 @@
+url,year,season_type,category,last_page
 "http://www.nfl.com/stats/categorystats?tabSeq=0&season=2016&seasonType=REG&d-447263-n=2&d-447263-o=2&statisticCategory=PASSING&conference=null&d-447263-p=1",2016,REG,PASSING,2
 "http://www.nfl.com/stats/categorystats?tabSeq=0&season=2016&seasonType=POST&d-447263-n=2&d-447263-o=2&statisticCategory=PASSING&conference=null&d-447263-p=1",2016,POST,PASSING,1
 "http://www.nfl.com/stats/categorystats?tabSeq=0&season=2016&seasonType=PRE&d-447263-n=2&d-447263-o=2&statisticCategory=PASSING&conference=null&d-447263-p=1",2016,PRE,PASSING,2
