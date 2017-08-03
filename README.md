@@ -60,11 +60,41 @@ dalvin cook
 
 did
 -----
+8-2-17:
+
+finished old schedule scraper. Scraped to 1999.
+
+Started a notebook to figure out which teams have best ops for wrs, rbs, qbs based on team rankings and schedule
+
+The python notebook taught me how to use dataframes with multiple merges. The issue with this is that it's a ton of code. In SQL you can accomplish the samething in fewer lines. 
+
+One issue with dealing with csvs and data frames is that a modification to the csv file using excel turns the commas to tabs.
+
+Then you have to go into the notebook and update the way you load the csv in.
+
+Also, if you rename a column in the csv, you have to rename everything in your notebook. Accidentally modifying a csv is easier than accidentally modifying a database table.
+
+Using SQL instead of CSVs let's you use the data for a website in a scalable way (you won't have to load the entire dataset to display one row).
+
+In schema.sql, I wrote the table structure for rankings, teams and schedules. I also loaded the csv data into them.
+
+In seeds.sql, I wrote the csv imports in.
+
+I also ran the following query to dump the database:
+
+```
+pg_dump -Ft fantasy_football > db.tar
+```
+
+I started writing the relevant queries into queries.sql
+
+almost done with the overall schedule rankings
+
 8-1-17:
 
 organized folder structure. 
 
-finished new nfl schedule scraper. Currently scraping in data.
+finished new nfl schedule scraper. Currently scraping in data. Abandoned the old way, because even with manipulation it had extra games some how.
 
 7-30-17:
 
