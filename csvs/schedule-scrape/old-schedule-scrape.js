@@ -1,5 +1,5 @@
 //usage:
-//node new-schedule-scrape.js 2017 1
+//node old-schedule-scrape.js 2017 1
 
 var Nightmare = require('nightmare');
 var cheerio = require('cheerio');
@@ -40,39 +40,25 @@ function scrape(url){
         var gamesPlayed = $('ul.schedules-table');
         var lis = gamesPlayed.children('.schedules-list-matchup');
         var liText = lis.text().trim();
-        var liTextMod = liText.replace(/\s\s+/g, ' ');
+        var liTextMod = liText.replace(/\s\s+/g, ' ').replace(/FINAL /g, '');
 
         var games = liTextMod.split(' Share ');
 
-        console.log(games);
-
         gamesChanged = games.map(function(el){
-          return el.split(' ET ');
+          var upTo = el.indexOf(' Full Game');
+          var partOfEl = el.slice(0, upTo);
+          return partOfEl.split(' ');
         });
         
-        console.log(gamesChanged);
-
-        gamesChangedAgain = gamesChanged.map(function(el){
-          var week = weekToScrape;
-          var time = el[0];
-          var awayHome = el[1].split(' at ');
-
-          return [week, time, awayHome];
+        finalGamesChanged = gamesChanged.map(function(el){
+          el.push(yearToScrape, weekToScrape)
+          return el;
         });
 
-        console.log(gamesChangedAgain);
+        console.log(finalGamesChanged); //worked
 
-        //flatten the array and get rid of Share if it's still there
-        gamesFlattened = gamesChangedAgain.map(function(el){
-          var flat = (el.join(",").replace(' Share', '')).split(',');
-          flat.push(yearToScrape);
-          return flat;
-        });
-
-        console.log(gamesFlattened);
-
-        for (var i=0; i<gamesFlattened.length; i++){
-          fs.appendFile('new-cleaned-schedule.csv', gamesFlattened[i].join(',') + "\n", 'utf8', function (err) {
+        for (var i=0; i<finalGamesChanged.length; i++){
+          fs.appendFile('old-cleaned-schedule.csv', finalGamesChanged[i].join(',') + "\n", 'utf8', function (err) {
             if (err) {
               console.log('Some error occured - file either not saved or corrupted file saved.');
             } else{
