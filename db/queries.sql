@@ -49,6 +49,7 @@ order by s.week, s.away asc;
 -- it assumes that there are only 32 rankings for each team
 	-- this can change because I could load in rankings for another article
 -- I threw in away and home for wr and rb rankings (but I didn't take into account opp defense and opp offense)
+	-- I then ordered by week and away_wr_ranking
 WITH sched_def_rankings AS (select s.week, s.away, away_teams.acronym as away_acr, s.home, home_teams.acronym as home_acr,
 away_defs.ranking as away_def_ranking, home_defs.ranking as home_def_ranking
 from schedules s
@@ -80,5 +81,6 @@ on away_ors.acronym = sdrolr.away_acr)
 select ev.*, (0.25*(ev.away_off_line_ranking)+0.75*(32-ev.away_def_ranking+1)) as away_wr_ranking, 
 (0.25*(ev.home_off_line_ranking)+0.75*(32-ev.home_def_ranking+1)) as home_wr_ranking,
 (0.75*(ev.away_off_line_ranking)+0.25*(ev.away_def_ranking)) as away_rb_ranking, 
-(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking)) as home_rb_ranking,
-from sched_def_oline_off_rankings ev;
+(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking)) as home_rb_ranking
+from sched_def_oline_off_rankings ev
+order by ev.week, away_wr_ranking asc;
