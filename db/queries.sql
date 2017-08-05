@@ -111,8 +111,54 @@ from sched_plus_rankings ev
 order by away_wr_ranking asc;
 
 
+--running the above query like this:
 
+-- 11 something or below is a good score
+	--- week1 wr
+	  -- away: steelers, falcons, panthers 
+	  -- home: bills, bears
+	--- week1 rb
+	  -- away: chiefs, eagles, jaguars, raiders, 
+	  -- home: packers, cowboys, patriots, titans
+	--- week2 wr
+	  -- away: packers, bears, 
+	  -- home: falcons, raiders, bucs
+	--- week2 rb
+	  -- away: eagles, cowboys, titans 
+	  -- home: steelers
 
+select 
+ev.week,
+-- wr
+	--60%
+		-- 50% bad defense, 25% good offensive line, 25% good offense
+	--40% opponent has bad defense
+ev.away,
+(0.60*(+0.5*(32-ev.away_def_ranking+1)+0.25*(ev.away_off_line_ranking)+0.25*(ev.away_off_ranking))+
+0.40*((32-ev.home_def_ranking+1))) as away_wr_ranking, 
+
+ev.home,
+(0.60*(+0.5*(32-ev.home_def_ranking+1)+0.25*(ev.home_off_line_ranking)+0.25*(ev.home_off_ranking))+
+0.40*((32-ev.away_def_ranking+1))) as home_wr_ranking, 
+
+ev.week,
+-- rb
+	--45%
+		-- 75% good offensive line, 25% good defense
+	--20% good offense
+	--35% opponent has bad defense
+ev.away,
+(0.45*(0.75*(ev.away_off_line_ranking)+0.25*(ev.away_def_ranking))+
+0.20*(ev.away_off_ranking)+	
+0.35*(ev.home_def_ranking)) as away_rb_ranking, 
+
+ev.home,
+(0.45*(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking))+
+0.20*(ev.home_off_ranking)+	
+0.35*(ev.away_def_ranking)) as home_rb_ranking
+from sched_plus_rankings ev
+where week=1
+order by away_rb_ranking asc;
 
 
 
