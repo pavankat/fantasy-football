@@ -75,10 +75,10 @@ ev.home,
 
 ev.week,
 -- kicker
-	--50% bad offensive line,
+	--40% bad offensive line,
 	--20% good offense
 	--20% good defense,
-	--20% opponent bad defense
+	--20% opponent good defense
 ev.away,
 (0.4*(32-ev.away_off_line_ranking+1)+
 0.2*(ev.away_off_ranking)+
