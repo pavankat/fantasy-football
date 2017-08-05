@@ -39,128 +39,41 @@ left join teams tea
 on s.home = tea.team
 order by s.week, s.away asc;
 
--- THE LOWER THE BETTER
--- select from view to reduce joins 
--- I then ordered by week and away_wr_ranking
-	-- Then I took into account opp defense. Weaker defense means better opportunities.
-select 
-ev.week,
--- wr
-	--60%
-		-- 50% bad defense, 25% good offensive line, 25% good offense
-	--40% opponent has bad defense
-ev.away,
-(0.60*(+0.5*(32-ev.away_def_ranking+1)+0.25*(ev.away_off_line_ranking)+0.25*(ev.away_off_ranking))+
-0.40*((32-ev.home_def_ranking+1))) as away_wr_ranking, 
+-- exploring the schedule and rankings
+	select *
+	from sched_plus_rankings;
 
-ev.home,
-(0.60*(+0.5*(32-ev.home_def_ranking+1)+0.25*(ev.home_off_line_ranking)+0.25*(ev.home_off_ranking))+
-0.40*((32-ev.away_def_ranking+1))) as home_wr_ranking, 
+-- exploring the transforms on the schedule and rankings
+	-- select from view to reduce joins 
+		select *
+		from sched_plus_rankings_transforms
+		order by week asc;
 
-ev.week,
--- rb
-	--45%
-		-- 75% good offensive line, 25% good defense
-	--20% good offense
-	--35% opponent has bad defense
-ev.away,
-(0.45*(0.75*(ev.away_off_line_ranking)+0.25*(ev.away_def_ranking))+
-0.20*(ev.away_off_ranking)+	
-0.35*(ev.home_def_ranking)) as away_rb_ranking, 
+-- exploring each individual week and metric
+	-- 11 something or below is a good score
+		--- week1 wr
+		  -- away: steelers, falcons, panthers 
+		  -- home: bills, bears
+		--- week1 rb
+		  -- away: chiefs, eagles, jaguars, raiders, 
+		  -- home: packers, cowboys, patriots, titans
+		--- week2 wr
+		  -- away: packers, bears, 
+		  -- home: falcons, raiders, bucs
+		--- week2 rb
+		  -- away: eagles, cowboys, titans 
+		  -- home: steelers
 
-ev.home,
-(0.45*(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking))+
-0.20*(ev.home_off_ranking)+	
-0.35*(ev.away_def_ranking)) as home_rb_ranking,
+		select week, 
+		away, away_wr_ranking, 
+		home, home_wr_ranking, 
+		week, 
+		away, away_rb_ranking, 
+		home, home_rb_ranking
 
-ev.week,
--- kicker
-	--40% bad offensive line,
-	--20% good offense
-	--20% good defense,
-	--20% opponent good defense
-ev.away,
-(0.4*(32-ev.away_off_line_ranking+1)+
-0.2*(ev.away_off_ranking)+
-0.2*(ev.away_def_ranking)+
-0.2*(ev.home_def_ranking)) as away_kicker_ranking,
-
-ev.home,
-(0.4*(32-ev.home_off_line_ranking+1)+
-0.2*(ev.home_off_ranking)+
-0.2*(ev.home_def_ranking)+
-0.2*(ev.away_def_ranking)) as home_kicker_ranking,
-
-ev.week,
---defense 
-	-- 40% bad opponent offense
-	-- 20% good defense
-	-- 40% bad opponent offensive line
-ev.away,
-(0.4*(32-ev.home_off_ranking+1)+
-0.2*(away_def_ranking)+
-0.4*(32-ev.home_off_line_ranking+1)) as away_def_ranking,
-
-ev.home,
-(0.4*(32-ev.away_off_ranking+1)+
-0.2*(home_def_ranking)+
-0.4*(32-ev.away_off_line_ranking+1)) as home_def_ranking,
-
-ev.*
-from sched_plus_rankings ev
-order by away_wr_ranking asc;
-
-
---running the above query like this:
-
--- 11 something or below is a good score
-	--- week1 wr
-	  -- away: steelers, falcons, panthers 
-	  -- home: bills, bears
-	--- week1 rb
-	  -- away: chiefs, eagles, jaguars, raiders, 
-	  -- home: packers, cowboys, patriots, titans
-	--- week2 wr
-	  -- away: packers, bears, 
-	  -- home: falcons, raiders, bucs
-	--- week2 rb
-	  -- away: eagles, cowboys, titans 
-	  -- home: steelers
-
-select 
-ev.week,
--- wr
-	--60%
-		-- 50% bad defense, 25% good offensive line, 25% good offense
-	--40% opponent has bad defense
-ev.away,
-(0.60*(+0.5*(32-ev.away_def_ranking+1)+0.25*(ev.away_off_line_ranking)+0.25*(ev.away_off_ranking))+
-0.40*((32-ev.home_def_ranking+1))) as away_wr_ranking, 
-
-ev.home,
-(0.60*(+0.5*(32-ev.home_def_ranking+1)+0.25*(ev.home_off_line_ranking)+0.25*(ev.home_off_ranking))+
-0.40*((32-ev.away_def_ranking+1))) as home_wr_ranking, 
-
-ev.week,
--- rb
-	--45%
-		-- 75% good offensive line, 25% good defense
-	--20% good offense
-	--35% opponent has bad defense
-ev.away,
-(0.45*(0.75*(ev.away_off_line_ranking)+0.25*(ev.away_def_ranking))+
-0.20*(ev.away_off_ranking)+	
-0.35*(ev.home_def_ranking)) as away_rb_ranking, 
-
-ev.home,
-(0.45*(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking))+
-0.20*(ev.home_off_ranking)+	
-0.35*(ev.away_def_ranking)) as home_rb_ranking
-from sched_plus_rankings ev
-where week=1
-order by away_rb_ranking asc;
-
-
+		from sched_plus_rankings_transforms
+		where week=1
+		order by away_rb_ranking asc;
 
 
 
