@@ -15,29 +15,29 @@ from teams
 order by acronym asc;
 
 -- this gives 6 results because these teams have mutliple acronyms
-select * 
-from teams
-where team in ('Jaguars', 'Rams', 'Chargers');
+	select * 
+	from teams
+	where team in ('Jaguars', 'Rams', 'Chargers');
 
-select * 
-from schedules
-order by week, away asc;
+	select * 
+	from schedules
+	order by week, away asc;
 
 --get defensive rankings for teams with multiple acronyms
-select * 
-from def_rankings def
-left join teams tea
-on tea.acronym = def.acronym
-where tea.acronym in ('JAX', 'JAC', 'SD', 'LAC', 'STL', 'LAR');
+	select * 
+	from def_rankings def
+	left join teams tea
+	on tea.acronym = def.acronym
+	where tea.acronym in ('JAX', 'JAC', 'SD', 'LAC', 'STL', 'LAR');
 
 --show me the scheudule with the teams that are playing and the acronyms for those teams
-select s.week, s.away, t.acronym as away_team_acr, s.home, tea.acronym as home_team_acr
-from schedules s
-left join teams t
-on s.away = t.team
-left join teams tea
-on s.home = tea.team
-order by s.week, s.away asc;
+	select s.week, s.away, t.acronym as away_team_acr, s.home, tea.acronym as home_team_acr
+	from schedules s
+	left join teams t
+	on s.away = t.team
+	left join teams tea
+	on s.home = tea.team
+	order by s.week, s.away asc;
 
 -- exploring the schedule and rankings
 	select *
@@ -74,6 +74,180 @@ order by s.week, s.away asc;
 		from sched_plus_rankings_transforms
 		where week=1
 		order by away_rb_ranking asc;
+
+
+-- rankings for packers weeks 1-4 (do 1-4 because no bye weeks to content with)
+	(SELECT st.away_rb_ranking, st.away
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			AND st.away = 'Packers'
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking, st.home
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			AND st.home = 'Packers'
+			ORDER BY st.home_rb_ranking ASC);
+
+-- weeks 1-4 rb rankings
+	WITH rbs AS (
+	(SELECT st.away_rb_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			ORDER BY st.home_rb_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM rbs
+	GROUP BY team
+	ORDER BY ranking_sum;
+
+-- rb rankings weeks 5-12
+	WITH rbs AS (
+	(SELECT st.away_rb_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 4 AND st.week < 13
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 4 AND st.week < 13
+			ORDER BY st.home_rb_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM rbs
+	GROUP BY team
+	ORDER BY team;
+
+-- rb rankings weeks 1 - 12 
+	WITH rbs AS (
+	(SELECT st.away_rb_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week < 13
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week < 13
+			ORDER BY st.home_rb_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM rbs
+	GROUP BY team
+	ORDER BY team;
+
+-- rb rankings weeks 13 - 17
+	WITH rbs AS (
+	(SELECT st.away_rb_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 12
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 12
+			ORDER BY st.home_rb_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM rbs
+	GROUP BY team
+	ORDER BY team;
+
+-- rb rankings weeks 1-17
+	WITH rbs AS (
+	(SELECT st.away_rb_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.away_rb_ranking ASC)
+	UNION
+	(SELECT st.home_rb_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.home_rb_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM rbs
+	GROUP BY team
+	ORDER BY team;
+
+-- best wrs weeks 1-17
+	WITH wrs AS (
+	(SELECT st.away_wr_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.away_wr_ranking ASC)
+	UNION
+	(SELECT st.home_wr_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.home_wr_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM wrs
+	GROUP BY team
+	ORDER BY team;
+
+-- best wrs weeks 1-4
+	WITH wrs AS (
+	(SELECT st.away_wr_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			ORDER BY st.away_wr_ranking ASC)
+	UNION
+	(SELECT st.home_wr_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week <= 4
+			ORDER BY st.home_wr_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM wrs
+	GROUP BY team
+	ORDER BY team;
+
+-- defenses 1-17
+	WITH defs AS (
+	(SELECT st.away_defence_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.away_defence_ranking ASC)
+	UNION
+	(SELECT st.home_defence_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			ORDER BY st.home_defence_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM defs
+	GROUP BY team
+	ORDER BY team;
+
+-- defense rankings for weeks 13-17
+	WITH defs AS (
+	(SELECT st.away_defence_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 12
+			ORDER BY st.away_defence_ranking ASC)
+	UNION
+	(SELECT st.home_defence_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week > 12
+			ORDER BY st.home_defence_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM defs
+	GROUP BY team
+	ORDER BY team;
+
+-- kicker rankings weeks 1-4
+	WITH kickers AS (
+	(SELECT st.away_kicker_ranking as ranking, st.away as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week < 5
+			ORDER BY st.away_kicker_ranking ASC)
+	UNION
+	(SELECT st.home_kicker_ranking as ranking, st.home as team
+			FROM sched_plus_rankings_transforms st
+			WHERE st.week < 5
+			ORDER BY st.home_kicker_ranking ASC))
+	SELECT SUM(ranking) as ranking_sum, team
+	FROM kickers
+	GROUP BY team
+	ORDER BY team;
+
+
+
+
+
+
 
 
 

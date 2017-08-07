@@ -27,30 +27,6 @@ wide receivers:
 running backs:
 =0.75*('offensive line rankings'!B2)+0.25*('defense rankings'!B2)
 
-# Steals I think based on intuition
-
-Hunter Henry	
-
-Zach Ertz
-
-Kelvin Benjamin
-
-John Brown
-
-Stefon Diggs	
-
-Cameron Merideth/Kevin White
-
-Tyrell Williams - Los Angeles Chargers	
-
-Marqise Lee - Jaguars
-
-Ty Montgomery
-
-LeGarrette Blount
-
-Dalvin Cook
-
 # journal
 -----
 ### 8-2-17:
