@@ -4,6 +4,7 @@ DROP TABLE IF EXISTS def_rankings;
 DROP TABLE IF EXISTS off_line_rankings;
 DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS old_schedules;
+DROP TABLE IF EXISTS drafts;
 
 CREATE TABLE teams(
     id SERIAL PRIMARY KEY,
@@ -54,6 +55,20 @@ CREATE TABLE old_schedules(
     home VARCHAR(255),
     year VARCHAR(255),
     week INTEGER
+);
+
+-- use this table to analyze where players are going in a draft and where the value picks are
+CREATE TABLE drafts(
+    id SERIAL PRIMARY KEY,
+    round INTEGER,
+    place_in_round INTEGER,
+    player VARCHAR(255),
+    team VARCHAR(255),
+    position VARCHAR(255),
+    mock BOOLEAN DEFAULT FALSE,
+    website VARCHAR(255),
+    typ VARCHAR(255),
+    dat DATE
 );
 
 --create virtual table to transform on this with another query
