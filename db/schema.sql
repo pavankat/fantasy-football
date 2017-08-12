@@ -82,7 +82,7 @@ CREATE TABLE drafts(
     -- it assumes that there are only 32 rankings for each team
         -- this can change because I could load in rankings for another article
     -- I threw in away and home for wr and rb rankings
-        CREATE VIEW sched_plus_rankings AS
+        CREATE OR REPLACE VIEW sched_plus_rankings AS
         WITH sched_def_rankings AS (select s.week, s.away, away_teams.acronym as away_acr, s.home, home_teams.acronym as home_acr,
         away_defs.ranking as away_def_ranking, home_defs.ranking as home_def_ranking
         from schedules s
@@ -118,7 +118,7 @@ CREATE TABLE drafts(
 -- select from view to reduce joins 
 -- I then ordered by week and away_wr_ranking
     -- Then I took into account opp defense. Weaker defense means better opportunities.
-    CREATE VIEW sched_plus_rankings_transforms AS
+    CREATE OR REPLACE VIEW sched_plus_rankings_transforms AS
     select 
     -- wr
         --60%
@@ -136,11 +136,11 @@ CREATE TABLE drafts(
         --35% opponent has bad defense
     (0.45*(0.75*(ev.away_off_line_ranking)+0.25*(ev.away_def_ranking))+
     0.20*(ev.away_off_ranking)+ 
-    0.35*(ev.home_def_ranking)) as away_rb_ranking, 
+    0.35*(32-ev.home_def_ranking+1)) as away_rb_ranking, 
     
     (0.45*(0.75*(ev.home_off_line_ranking)+0.25*(ev.home_def_ranking))+
     0.20*(ev.home_off_ranking)+ 
-    0.35*(ev.away_def_ranking)) as home_rb_ranking,
+    0.35*(32-ev.away_def_ranking+1)) as home_rb_ranking,
     -- kicker
         --40% bad offensive line,
         --20% good offense

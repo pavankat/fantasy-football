@@ -298,6 +298,41 @@ order by acronym asc;
 	FROM altogether al
 	order by round, dense_rank;
 	
+-- or without an extra with
+	WITH rbs AS (
+		(SELECT st.away_rb_ranking as ranking, st.away as team, st.week
+				FROM sched_plus_rankings_transforms st
+				ORDER BY st.away_rb_ranking ASC)
+		UNION
+		(SELECT st.home_rb_ranking as ranking, st.home as team, st.week
+				FROM sched_plus_rankings_transforms st
+				ORDER BY st.home_rb_ranking ASC)
+	), 
+	week4_rb AS 
+	(
+		SELECT SUM(ranking) as ranking_sum, team
+		FROM rbs
+		WHERE rbs.week <= 4
+		GROUP BY team
+		ORDER BY ranking_sum
+	)
+	SELECT d.player, 
+	d.position, te.acronym, te.team, 
+	week4_rb.ranking_sum AS week4_rb_ranking_sum, d.round, d.place_in_round,
+	DENSE_RANK() OVER (ORDER BY week4_rb.ranking_sum ASC)
+	FROM drafts d
+
+	LEFT JOIN teams te
+	ON LOWER(d.team) = LOWER(te.acronym)
+
+	LEFT JOIN week4_rb
+	ON week4_rb.team = te.team AND
+	
+	d.position = 'RB'
+	WHERE d.position = 'RB'
+	ORDER BY d.round, dense_rank;
+
+	
 
 
 
