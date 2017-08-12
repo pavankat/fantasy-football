@@ -243,10 +243,47 @@ order by acronym asc;
 	GROUP BY team
 	ORDER BY team;
 
+-- get the draft (in the future I can filter this by date - unless I do more than one in a day - I should change it to a timestamp if that happens in the future)
+	SELECT d.round, d.place_in_round, d.player, 
+	d.position, te.acronym, te.team 
+	FROM drafts d
+	LEFT JOIN teams te
+	ON lower(d.team) = lower(te.acronym);
 
 
+-- gets the draft position, player name, draft round and ranking of player (need to rework a little)
 
+	WITH rbs AS (
+		(SELECT st.away_rb_ranking as ranking, st.away as team, st.week
+				FROM sched_plus_rankings_transforms st
+				ORDER BY st.away_rb_ranking ASC)
+		UNION
+		(SELECT st.home_rb_ranking as ranking, st.home as team, st.week
+				FROM sched_plus_rankings_transforms st
+				ORDER BY st.home_rb_ranking ASC)
+	), 
+	week4_rb AS 
+	(
+		SELECT SUM(ranking) as ranking_sum, team
+		FROM rbs
+		WHERE rbs.week <= 4
+		GROUP BY team
+		ORDER BY ranking_sum
+	)
+	SELECT d.player, 
+	d.position, te.acronym, te.team, 
+	week4_rb.ranking_sum AS week4_rb_ranking_sum, d.round, d.place_in_round
+	FROM drafts d
 
+	LEFT JOIN teams te
+	ON LOWER(d.team) = LOWER(te.acronym)
+
+	LEFT JOIN week4_rb
+	ON week4_rb.team = te.team AND
+
+	d.position = 'RB'
+
+	ORDER BY week4_rb_ranking_sum ASC;
 
 
 
