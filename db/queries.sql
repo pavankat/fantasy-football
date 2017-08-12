@@ -252,10 +252,12 @@ order by acronym asc;
 
 
 -- gets the draft position, player name, draft round and ranking of the rb for weeks 1-4 and puts an artificial column going from 1 to the last one
--- by using rank instead of row number we don't double count a team 
-	-- DeMarco Murray and Derrick Henry	are both RBs on the Titans and they'll both be ranked 1 since they have the lowest rank during weeks 1-4
--- I used dense rank instead of rank because rank won't double count, but it'll go 1,1,3,4,4,6 
--- dense rank will do this 1,1,2,3,3,4
+
+-- creating a virtual column of rankings going from 1 (best) to 31 (worst) - not sure why it doesn't go to 32?
+	-- by using rank instead of row number we don't double count a team 
+		-- DeMarco Murray and Derrick Henry	are both RBs on the Titans and they'll both be ranked 1 since they have the lowest rank during weeks 1-4
+	-- I used dense rank instead of rank because rank won't double count, but it'll go 1,1,3,4,4,6 
+	-- dense rank will do this 1,1,2,3,3,4
 
 	WITH rbs AS (
 		(SELECT st.away_rb_ranking as ranking, st.away as team, st.week
