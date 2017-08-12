@@ -21,12 +21,32 @@ manually create a csv file (ex. offense-rankings.csv)
 
 # current formulas
 
-wide receivers: 
-=0.25*('offensive line rankings'!B2)+0.75*(32-'defense rankings'!B2+1)
+doing a weighted mean utilizing different projections
 
-running backs:
-=0.75*('offensive line rankings'!B2)+0.25*('defense rankings'!B2)
+check out db/schema.sql for the sql query used to do this
 
+-- wr
+    --60%
+        -- 50% bad defense, 25% good offensive line, 25% good offense
+    --40% opponent has bad defense
+
+-- rb
+    --45%
+        -- 75% good offensive line, 25% good defense
+    --20% good offense
+    --35% opponent has bad defense
+
+-- kicker
+    --40% bad offensive line,
+    --20% good offense
+    --20% good defense,
+    --20% opponent good defense
+
+--defense 
+    -- 40% bad opponent offense
+    -- 20% good defense
+    -- 40% bad opponent offensive line
+             
 # journal
 -----
 ### 8-2-17:
