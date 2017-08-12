@@ -132,8 +132,15 @@ Then I need to start scraping their individual information
 -----
 * might want to switch o line rankings to https://www.fantasypros.com/2017/07/nfl-offensive-line-rankings-and-fantasy-impact/ OR add that in with profootball to see which one is better
 
-* need to use the schedule to really deep dive into who the weekly winners are and if there's a streak of having a really good opportunity (ex. weeks 1-6 use ameer abdullah and then it's downhill for him so trade him away then)
+* need to add qb rankings to wide receivers and wide receiver rankings + qb rankings to rbs (opens up rb lanes and better passes mean more yards and accurate red zone targets)
 
-* need to add qb rankings to wide receivers and wide receiver rankings to rbs (opens up rb lanes)
+* scrape mockdraftable data
+
+* scrape playerprofiler data
+
+* scrape roster data
+
+
+
 
 

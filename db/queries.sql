@@ -282,9 +282,8 @@ order by acronym asc;
 	ON week4_rb.team = te.team AND
 
 	d.position = 'RB'
-
+	WHERE d.position = 'RB'
 	ORDER BY week4_rb_ranking_sum ASC;
-
 
 
 
