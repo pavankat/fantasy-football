@@ -52,6 +52,12 @@ check out db/schema.sql for the sql query used to do this
 
 # journal
 -----
+### 8-12-17:
+
+finally got down to the query that'll give me a virtual ranking of the players based on the weighted mean for weeks 1-4 (without double counting team) and ordered by the draft round and then the ranking
+
+I had to use a window function called dense rank
+
 ### 8-2-17:
 
 finished old schedule scraper. Scraped to 1999.
