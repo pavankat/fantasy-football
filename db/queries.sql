@@ -258,7 +258,6 @@ order by acronym asc;
 		-- DeMarco Murray and Derrick Henry	are both RBs on the Titans and they'll both be ranked 1 since they have the lowest rank during weeks 1-4
 	-- I used dense rank instead of rank because rank won't double count, but it'll go 1,1,3,4,4,6 
 	-- dense rank will do this 1,1,2,3,3,4
-
 	WITH rbs AS (
 		(SELECT st.away_rb_ranking as ranking, st.away as team, st.week
 				FROM sched_plus_rankings_transforms st
@@ -268,47 +267,7 @@ order by acronym asc;
 				FROM sched_plus_rankings_transforms st
 				ORDER BY st.home_rb_ranking ASC)
 	), 
-	week4_rb AS 
-	(
-		SELECT SUM(ranking) as ranking_sum, team
-		FROM rbs
-		WHERE rbs.week <= 4
-		GROUP BY team
-		ORDER BY ranking_sum
-	),
-	altogether AS
-	(
-	SELECT d.player, 
-	d.position, te.acronym, te.team, 
-	week4_rb.ranking_sum AS week4_rb_ranking_sum, d.round, d.place_in_round
-	FROM drafts d
-
-	LEFT JOIN teams te
-	ON LOWER(d.team) = LOWER(te.acronym)
-
-	LEFT JOIN week4_rb
-	ON week4_rb.team = te.team AND
-	
-	d.position = 'RB'
-	WHERE d.position = 'RB'
-	ORDER BY week4_rb_ranking_sum ASC
-	)
-	SELECT *,
-	DENSE_RANK() OVER (ORDER BY al.week4_rb_ranking_sum ASC)
-	FROM altogether al
-	order by round, dense_rank;
-	
--- or without an extra with
-	WITH rbs AS (
-		(SELECT st.away_rb_ranking as ranking, st.away as team, st.week
-				FROM sched_plus_rankings_transforms st
-				ORDER BY st.away_rb_ranking ASC)
-		UNION
-		(SELECT st.home_rb_ranking as ranking, st.home as team, st.week
-				FROM sched_plus_rankings_transforms st
-				ORDER BY st.home_rb_ranking ASC)
-	), 
-	week4_rb AS 
+	ranking_sums_over_weeks AS 
 	(
 		SELECT SUM(ranking) as ranking_sum, team
 		FROM rbs
@@ -318,24 +277,53 @@ order by acronym asc;
 	)
 	SELECT d.player, 
 	d.position, te.acronym, te.team, 
-	week4_rb.ranking_sum AS week4_rb_ranking_sum, d.round, d.place_in_round,
-	DENSE_RANK() OVER (ORDER BY week4_rb.ranking_sum ASC)
+	ranking_sums_over_weeks.ranking_sum AS ranking_sum, d.round, d.place_in_round,
+	DENSE_RANK() OVER (ORDER BY ranking_sums_over_weeks.ranking_sum ASC)
 	FROM drafts d
 
 	LEFT JOIN teams te
 	ON LOWER(d.team) = LOWER(te.acronym)
 
-	LEFT JOIN week4_rb
-	ON week4_rb.team = te.team AND
+	LEFT JOIN ranking_sums_over_weeks
+	ON ranking_sums_over_weeks.team = te.team AND
 	
 	d.position = 'RB'
 	WHERE d.position = 'RB'
 	ORDER BY d.round, dense_rank;
 
+-- for wrs + dense rank
+
+	WITH wrs AS (
+		(SELECT st.away_wr_ranking as ranking, st.away as team, st.week
+				FROM sched_plus_rankings_transforms st
+				WHERE st.week <= 4
+				ORDER BY st.away_wr_ranking ASC)
+		UNION
+		(SELECT st.home_wr_ranking as ranking, st.home as team, st.week
+				FROM sched_plus_rankings_transforms st
+				WHERE st.week <= 4
+				ORDER BY st.home_wr_ranking ASC)
+	), 
+	ranking_sums_over_weeks AS 
+	(
+		SELECT SUM(ranking) as ranking_sum, team
+		FROM wrs
+		WHERE wrs.week <= 4
+		GROUP BY team
+		ORDER BY ranking_sum
+	)
+	SELECT d.player, 
+	d.position, te.acronym, te.team, 
+	ranking_sums_over_weeks.ranking_sum AS ranking_sum, d.round, d.place_in_round,
+	DENSE_RANK() OVER (ORDER BY ranking_sums_over_weeks.ranking_sum ASC)
+	FROM drafts d
+
+	LEFT JOIN teams te
+	ON LOWER(d.team) = LOWER(te.acronym)
+
+	LEFT JOIN ranking_sums_over_weeks
+	ON ranking_sums_over_weeks.team = te.team AND
 	
-
-
-
-
-
-
+	d.position = 'WR'
+	WHERE d.position = 'WR'
+	ORDER BY d.round, dense_rank;
