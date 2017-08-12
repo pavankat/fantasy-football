@@ -13,7 +13,7 @@ creating a csv of urls looks unnecessary, but it's easier to debug what url fail
 
 the bash script looks unnecessary, but debugging bad responses within loops of setTimeouts and promises is very tricky and a waste of time.
 
-in practice, headless browser scraping works well on one page, but that's not easy when you are scraping thousands of pages. Unless, you write a simple shell script.
+in practice, headless browser scraping works well on one page, but difficult when scraping thousands of pages. That's why I wrote a simple shell script.
 
 ### 2. manual
 
@@ -46,7 +46,7 @@ check out db/schema.sql for the sql query used to do this
     -- 40% bad opponent offense
     -- 20% good defense
     -- 40% bad opponent offensive line
-             
+
 # journal
 -----
 ### 8-2-17:
