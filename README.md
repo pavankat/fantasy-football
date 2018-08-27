@@ -67,29 +67,34 @@ I put offense rankings into a csv and imported them in
 However, I disagreed with the rankings a bit. I put in my reasons
 
 was 18 WORSE because no running game
-    down to 22
+
+down to 22
 
 oak 22 BETTER because carr isn't hurt
-    up to 18
+
+up to 18
 
 baltimore 28 BETTER because flacco cares
-    up to 26
 
-    change bills to 28
+up to 26
 
-    change chicago to 27
+change bills to 28
+
+change chicago to 27
 
 jac 29 BETTER because bortles is back
-    up to 27
 
-    change chi to 28
+up to 27
 
-    change bills to 29
+change chi to 28
+
+change bills to 29
 
 denver 30 BETTER because keenum and royce
-    up to 29
 
-    switch bills to 29
+up to 29
+
+switch bills to 29
 
 I kept getting this 
 
@@ -120,57 +125,63 @@ I knew it was correct when it returned 256 results, which is the number of games
 
 Then I was able to run this for rbs:
 
-    WITH rbs AS (
-    (SELECT st.away_rb_ranking as ranking, st.away as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.away_rb_ranking ASC)
-    UNION
-    (SELECT st.home_rb_ranking as ranking, st.home as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.home_rb_ranking ASC))
-    SELECT SUM(ranking) as ranking_sum, team
-    FROM rbs
-    GROUP BY team
-    ORDER BY ranking_sum ASC;
+```
+WITH rbs AS (
+(SELECT st.away_rb_ranking as ranking, st.away as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.away_rb_ranking ASC)
+UNION
+(SELECT st.home_rb_ranking as ranking, st.home as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.home_rb_ranking ASC))
+SELECT SUM(ranking) as ranking_sum, team
+FROM rbs
+GROUP BY team
+ORDER BY ranking_sum ASC;
+```
 
 and wrs + qbs:
-    
-    WITH wrs AS (
-    (SELECT st.away_wr_ranking as ranking, st.away as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.away_wr_ranking ASC)
-    UNION
-    (SELECT st.home_wr_ranking as ranking, st.home as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.home_wr_ranking ASC))
-    SELECT SUM(ranking) as ranking_sum, team
-    FROM wrs
-    GROUP BY team
-    ORDER BY ranking_sum ASC;
+
+```    
+WITH wrs AS (
+(SELECT st.away_wr_ranking as ranking, st.away as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.away_wr_ranking ASC)
+UNION
+(SELECT st.home_wr_ranking as ranking, st.home as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.home_wr_ranking ASC))
+SELECT SUM(ranking) as ranking_sum, team
+FROM wrs
+GROUP BY team
+ORDER BY ranking_sum ASC;
+```
 
 and def:
-    
-    WITH defs AS (
-    (SELECT st.away_defence_ranking as ranking, st.away as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.away_defence_ranking ASC)
-    UNION
-    (SELECT st.home_defence_ranking as ranking, st.home as team
-            FROM sched_plus_rankings_transforms st
-            ORDER BY st.home_defence_ranking ASC))
-    SELECT SUM(ranking) as ranking_sum, team
-    FROM defs
-    GROUP BY team
-    ORDER BY ranking_sum ASC;
+
+``` 
+WITH defs AS (
+(SELECT st.away_defence_ranking as ranking, st.away as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.away_defence_ranking ASC)
+UNION
+(SELECT st.home_defence_ranking as ranking, st.home as team
+        FROM sched_plus_rankings_transforms st
+        ORDER BY st.home_defence_ranking ASC))
+SELECT SUM(ranking) as ranking_sum, team
+FROM defs
+GROUP BY team
+ORDER BY ranking_sum ASC;
+```
 
 also found these relevant links
 
-    http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=50&LeagueID=&order_by=Sack&sort_order=DESC
+http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=50&LeagueID=&order_by=Sack&sort_order=DESC
 
-    http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=70&LeagueID=&order_by=INTRet&sort_order=DESC
+http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=70&LeagueID=&order_by=INTRet&sort_order=DESC
 
-    http://www.fftoday.com/stats/fantasystats.php?o=2&TeamID=9020&Season=2017&PosID=99&Side=Scored&LeagueID=
-    
+http://www.fftoday.com/stats/fantasystats.php?o=2&TeamID=9020&Season=2017&PosID=99&Side=Scored&LeagueID=
+
 ### 8-12-17:
 
 finally got down to the query that'll give me a virtual ranking of the players based on the weighted mean for weeks 1-4 (without double counting team) and ordered by the draft round and then the ranking
