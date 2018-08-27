@@ -52,6 +52,125 @@ check out db/schema.sql for the sql query used to do this
 
 # journal
 -----
+### 8-26-18:
+
+scraped in 2018 schedule data into csv -> csvs/schedule-scrape/2018-cleaned-schedule.csv
+
+appended to schedules table
+
+using SQL query I added in the seeds.sql file
+
+got the offensive line and defense rankings into csvs and imported them in
+
+I put offense rankings into a csv and imported them in
+
+However, I disagreed with the rankings a bit. I put in my reasons
+
+was 18 WORSE because no running game
+    down to 22
+
+oak 22 BETTER because carr isn't hurt
+    up to 18
+
+baltimore 28 BETTER because flacco cares
+    up to 26
+
+    change bills to 28
+
+    change chicago to 27
+
+jac 29 BETTER because bortles is back
+    up to 27
+
+    change chi to 28
+
+    change bills to 29
+
+denver 30 BETTER because keenum and royce
+    up to 29
+
+    switch bills to 29
+
+I kept getting this 
+
+Error : ERROR:  cannot change name of view column "" to ""
+
+when I attempted to update the VIEWs
+
+so CREATE OR REPLACE is a lie. It doesn't replace!!!
+
+You have to DROP THE VIEW and rerun it. 
+
+Wow.
+
+so I added these to my schema.sql file:
+
+DROP VIEW sched_plus_rankings_transforms;
+DROP VIEW sched_plus_rankings;
+
+I then added the following to sched_plus_rankings
+
+s.year 
+
+and
+
+WHERE s.year = '2018' AND away_defs.year = '2018' AND home_defs.year = '2018'
+
+I knew it was correct when it returned 256 results, which is the number of games played in a NFL season
+
+Then I was able to run this for rbs:
+
+    WITH rbs AS (
+    (SELECT st.away_rb_ranking as ranking, st.away as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.away_rb_ranking ASC)
+    UNION
+    (SELECT st.home_rb_ranking as ranking, st.home as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.home_rb_ranking ASC))
+    SELECT SUM(ranking) as ranking_sum, team
+    FROM rbs
+    GROUP BY team
+    ORDER BY ranking_sum ASC;
+
+and wrs + qbs:
+    
+    WITH wrs AS (
+    (SELECT st.away_wr_ranking as ranking, st.away as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.away_wr_ranking ASC)
+    UNION
+    (SELECT st.home_wr_ranking as ranking, st.home as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.home_wr_ranking ASC))
+    SELECT SUM(ranking) as ranking_sum, team
+    FROM wrs
+    GROUP BY team
+    ORDER BY ranking_sum ASC;
+
+and def:
+    
+    WITH defs AS (
+    (SELECT st.away_defence_ranking as ranking, st.away as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.away_defence_ranking ASC)
+    UNION
+    (SELECT st.home_defence_ranking as ranking, st.home as team
+            FROM sched_plus_rankings_transforms st
+            ORDER BY st.home_defence_ranking ASC))
+    SELECT SUM(ranking) as ranking_sum, team
+    FROM defs
+    GROUP BY team
+    ORDER BY ranking_sum ASC;
+
+also found these relevant links
+
+    http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=50&LeagueID=&order_by=Sack&sort_order=DESC
+
+    http://fftoday.com/stats/playerstats.php?Season=2017&GameWeek=&PosID=70&LeagueID=&order_by=INTRet&sort_order=DESC
+
+    http://www.fftoday.com/stats/fantasystats.php?o=2&TeamID=9020&Season=2017&PosID=99&Side=Scored&LeagueID=
+    
 ### 8-12-17:
 
 finally got down to the query that'll give me a virtual ranking of the players based on the weighted mean for weeks 1-4 (without double counting team) and ordered by the draft round and then the ranking
@@ -146,7 +265,9 @@ Then I need to start scraping their individual information
 
 * scrape roster data
 
+----
 
+psql -d fantasy_football -U pavankatepalli
 
 
 

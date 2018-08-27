@@ -14,7 +14,7 @@ select *
 from teams
 order by acronym asc;
 
--- this gives 6 results because these teams have mutliple acronyms
+-- this gives 6 results because these teams have multiple acronyms
 	select * 
 	from teams
 	where team in ('Jaguars', 'Rams', 'Chargers');

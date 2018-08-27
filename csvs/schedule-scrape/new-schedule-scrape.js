@@ -72,7 +72,7 @@ function scrape(url){
         console.log(gamesFlattened);
 
         for (var i=0; i<gamesFlattened.length; i++){
-          fs.appendFile('new-cleaned-schedule.csv', gamesFlattened[i].join(',') + "\n", 'utf8', function (err) {
+          fs.appendFile('newer-cleaned-schedule.csv', gamesFlattened[i].join(',') + "\n", 'utf8', function (err) {
             if (err) {
               console.log('Some error occured - file either not saved or corrupted file saved.');
             } else{

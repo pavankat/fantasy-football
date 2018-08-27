@@ -6,6 +6,9 @@ DROP TABLE IF EXISTS schedules;
 DROP TABLE IF EXISTS old_schedules;
 DROP TABLE IF EXISTS drafts;
 
+DROP VIEW sched_plus_rankings_transforms;
+DROP VIEW sched_plus_rankings;
+
 CREATE TABLE teams(
     id SERIAL PRIMARY KEY,
     acronym VARCHAR(255),
@@ -82,9 +85,11 @@ CREATE TABLE drafts(
     -- it assumes that there are only 32 rankings for each team
         -- this can change because I could load in rankings for another article
     -- I threw in away and home for wr and rb rankings
+
         CREATE OR REPLACE VIEW sched_plus_rankings AS
+        
         WITH sched_def_rankings AS (select s.week, s.away, away_teams.acronym as away_acr, s.home, home_teams.acronym as home_acr,
-        away_defs.ranking as away_def_ranking, home_defs.ranking as home_def_ranking
+        away_defs.ranking as away_def_ranking, home_defs.ranking as home_def_ranking, s.year
         from schedules s
         left join teams away_teams
         on s.away = away_teams.team
@@ -94,7 +99,10 @@ CREATE TABLE drafts(
         on s.home = home_teams.team
         right join def_rankings home_defs
         on home_defs.acronym = home_teams.acronym
-        order by s.week, home_acr asc), sched_def_oline_rankings AS(
+        WHERE s.year = '2018' AND away_defs.year = '2018' AND home_defs.year = '2018'
+        order by s.week, home_acr asc),
+
+         sched_def_oline_rankings AS(
         select sdr.*, 
         home_ors.ranking as home_off_line_ranking, 
         away_ors.ranking  as away_off_line_ranking
@@ -102,7 +110,10 @@ CREATE TABLE drafts(
         left join off_line_rankings home_ors
         on home_ors.acronym = sdr.home_acr
         left join off_line_rankings away_ors
-        on away_ors.acronym = sdr.away_acr), sched_def_oline_off_rankings AS(
+        on away_ors.acronym = sdr.away_acr
+        WHERE home_ors.year = '2018' AND away_ors.year = '2018'), 
+
+         sched_def_oline_off_rankings AS(
         select sdrolr.*, 
         home_ors.ranking as home_off_ranking, 
         away_ors.ranking  as away_off_ranking
@@ -110,7 +121,9 @@ CREATE TABLE drafts(
         left join off_rankings home_ors
         on home_ors.acronym = sdrolr.home_acr
         left join off_rankings away_ors
-        on away_ors.acronym = sdrolr.away_acr)
+        on away_ors.acronym = sdrolr.away_acr
+        WHERE home_ors.year = '2018' AND away_ors.year = '2018')
+
         select * from sched_def_oline_off_rankings;
 
 --create virtual table to allow summing on this with another query

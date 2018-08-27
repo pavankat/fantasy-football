@@ -1,1 +1,0 @@
-cool to make a fun page where you pull in music videos of each player from youtube, a picture and our projections
