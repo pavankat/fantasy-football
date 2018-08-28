@@ -167,6 +167,22 @@ order by acronym asc;
 	GROUP BY team
 	ORDER BY team;
 
+		-- 2017
+
+			WITH rbs AS (
+			(SELECT st.away_rb_ranking as ranking, st.away as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.away_rb_ranking ASC)
+			UNION
+			(SELECT st.home_rb_ranking as ranking, st.home as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.home_rb_ranking ASC))
+			SELECT SUM(ranking) as ranking_sum, team
+			FROM rbs
+			GROUP BY team
+			ORDER BY ranking_sum ASC;
+
+
 -- best wrs weeks 1-17
 	WITH wrs AS (
 	(SELECT st.away_wr_ranking as ranking, st.away as team
@@ -180,6 +196,21 @@ order by acronym asc;
 	FROM wrs
 	GROUP BY team
 	ORDER BY team;
+
+		-- 2017
+
+			WITH wrs AS (
+			(SELECT st.away_wr_ranking as ranking, st.away as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.away_wr_ranking ASC)
+			UNION
+			(SELECT st.home_wr_ranking as ranking, st.home as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.home_wr_ranking ASC))
+			SELECT SUM(ranking) as ranking_sum, team
+			FROM wrs
+			GROUP BY team
+			ORDER BY ranking_sum ASC;
 
 -- best wrs weeks 1-4
 	WITH wrs AS (
@@ -210,6 +241,21 @@ order by acronym asc;
 	FROM defs
 	GROUP BY team
 	ORDER BY team;
+
+		-- for 2017
+
+			WITH defs AS (
+			(SELECT st.away_defence_ranking as ranking, st.away as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.away_defence_ranking ASC)
+			UNION
+			(SELECT st.home_defence_ranking as ranking, st.home as team
+			        FROM sched_plus_rankings_transforms_2017 st
+			        ORDER BY st.home_defence_ranking ASC))
+			SELECT SUM(ranking) as ranking_sum, team
+			FROM defs
+			GROUP BY team
+			ORDER BY ranking_sum ASC;
 
 -- defense rankings for weeks 13-17
 	WITH defs AS (
