@@ -61,107 +61,203 @@ lower the better for these rankings
 wrs/qbs:
 
 126.6000    Saints
+
 135.0500    Packers
+
 142.0000    Falcons
+
 143.5000    Browns
+
 160.1000    Bears
+
 168.3500    Steelers
+
 181.0000    Bills
+
 183.2000    Titans
+
 189.2500    Chargers
+
 196.2000    Colts
+
 196.7000    Raiders
+
 196.9500    Buccaneers
+
 197.0500    Jets
+
 201.6500    Panthers
+
 207.1500    Lions
+
 211.2000    Redskins
+
 212.6500    Eagles
+
 216.6500    49ers
+
 218.1500    Dolphins
+
 221.1500    Cowboys
+
 226.7000    Bengals
+
 229.3000    Jaguars
+
 234.5000    Patriots
+
 242.9000    Cardinals
+
 245.3500    Vikings
+
 246.6000    Rams
+
 264.2000    Chiefs
+
 272.6000    Ravens
+
 273.0000    Giants
+
 304.4500    Broncos
+
 308.7000    Seahawks
+
 311.1500    Texans
+
 
 defense:
 
 116.4   Texans
+
 128.0   Jaguars
+
 151.0   Cardinals
+
 158.0   Titans
+
 158.8   Colts
+
 165.2   Patriots
+
 166.0   Giants
+
 172.4   Seahawks
+
 178.8   Eagles
+
 180.0   Raiders
+
 180.4   Bengals
+
 180.8   Steelers
+
 182.6   Panthers
+
 190.6   Chiefs
+
 192.2   Broncos
+
 194.8   Vikings
+
 195.0   Dolphins
+
 195.2   Falcons
+
 195.6   Cowboys
+
 201.6   Redskins
+
 202.0   Rams
+
 203.2   Ravens
+
 211.2   Bills
+
 214.8   Saints
+
 219.2   49ers
+
 220.8   Buccaneers
+
 222.8   Chargers
+
 228.8   Browns
+
 232.0   Packers
+
 234.0   Lions
+
 247.2   Jets
+
 256.6   Bears
+
 
 rbs:
 
 117.6500    Steelers
+
 138.5500    Falcons
+
 142.2750    Eagles
+
 150.9875    Raiders
+
 151.5625    Packers
+
 162.7125    Cowboys
+
 163.9125    Patriots
+
 165.3375    Titans
+
 176.3625    Panthers
+
 191.2000    Vikings
+
 192.6750    Saints
+
 194.4625    Browns
+
 198.4250    Bears
+
 201.0000    Cardinals
+
 201.9375    Jaguars
+
 202.8375    Redskins
+
 208.1000    Chiefs
+
 211.0250    Bills
+
 232.8625    Giants
+
 240.6875    Dolphins
+
 246.7625    Chargers
+
 248.7875    Buccaneers
+
 250.7125    Ravens
+
 254.9125    Bengals
+
 258.6750    Broncos
+
 263.8875    Lions
+
 264.2625    Seahawks
+
 266.8125    Texans
+
 272.4250    Colts
+
 277.5250    Rams
+
 282.5125    Jets
+
 332.1625    49ers
+
 
 
 -------
@@ -173,108 +269,204 @@ lower the better for these rankings
 wrs/qbs:
 
 141.1500    Colts
+
 141.7500    Raiders
+
 145.9500    Chargers
+
 153.8000    Falcons
+
 155.3000    Packers
+
 169.8000    Browns
+
 171.0000    Bengals
+
 174.8000    Steelers
+
 175.6000    49ers
+
 177.4500    Cowboys
+
 194.4500    Buccaneers
+
 197.4000    Lions
+
 199.0500    Dolphins
+
 199.2000    Giants
+
 199.9500    Jets
+
 200.0500    Titans
+
 203.9000    Saints
+
 204.1500    Patriots
+
 205.2000    Cardinals
+
 207.7500    Redskins
+
 211.4000    Chiefs
+
 211.6000    Seahawks
+
 225.4000    Rams
+
 235.8000    Broncos
+
 238.1500    Bears
+
 242.8000    Ravens
+
 244.0000    Texans
+
 246.1000    Eagles
+
 251.6500    Panthers
+
 267.3500    Vikings
+
 268.5000    Bills
+
 271.7000    Jaguars
+
 
 defense:
 
 128.4   Vikings
+
 148.4   Bears
+
 149.2   Jaguars
+
 151.2   Lions
+
 153.6   Broncos
+
 156.0   Texans
+
 164.2   Chiefs
+
 167.0   Rams
+
 173.2   Ravens
+
 174.8   Packers
+
 179.6   Eagles
+
 180.4   Titans
+
 181.2   Panthers
+
 187.4   Falcons
+
 189.4   Patriots
+
 190.4   Chargers
+
 191.2   Redskins
+
 194.0   Raiders
+
 196.0   Bills
+
 200.6   Steelers
+
 204.4   Saints
+
 205.2   Buccaneers
+
 207.0   Browns
+
 211.4   Giants
+
 213.2   Colts
+
 214.4   Cardinals
+
 214.8   Bengals
+
 220.4   Jets
+
 223.2   Seahawks
+
 239.8   49ers
+
 241.2   Cowboys
+
 242.0   Dolphins
+
 
 
 rbs:
 
-97.7500 Steelers
+97.7500    Steelers
+
 102.2000    Saints
+
 128.5625    Eagles
+
 128.8875    Falcons
+
 149.6000    Rams
+
 160.9125    Packers
+
 162.3250    Lions
+
 167.6625    Raiders
+
 170.4125    Titans
+
 180.3375    Patriots
+
 183.6250    Jaguars
+
 183.8500    Chargers
+
 201.0500    Ravens
+
 201.1750    Cowboys
+
 209.3875    Colts
+
 210.1250    Vikings
+
 219.5125    Bears
+
 221.1875    Redskins
+
 223.8000    Bengals
+
 225.3000    Broncos
+
 226.3500    Cardinals
+
 233.9000    49ers
+
 235.0625    Panthers
+
 241.9500    Browns
+
 244.3750    Texans
+
 244.7000    Seahawks
+
 254.2500    Giants
+
 260.5000    Chiefs
+
 273.5750    Buccaneers
+
 292.7125    Dolphins
+
 307.5750    Bills
+
 310.4000    Jets
+
 
 
 
