@@ -58,7 +58,7 @@ check out db/schema.sql for the sql query used to do this
 
 lower the better for these rankings
 
-wrs/qbs:
+****wrs/qbs:****
 
 126.6000    Saints
 
@@ -125,7 +125,7 @@ wrs/qbs:
 311.1500    Texans
 
 
-defense:
+**defense:**
 
 116.4   Texans
 
@@ -192,7 +192,7 @@ defense:
 256.6   Bears
 
 
-rbs:
+**rbs:**
 
 117.6500    Steelers
 
@@ -266,7 +266,7 @@ rbs:
 
 lower the better for these rankings
 
-wrs/qbs:
+**wrs/qbs:**
 
 141.1500    Colts
 
@@ -333,7 +333,7 @@ wrs/qbs:
 271.7000    Jaguars
 
 
-defense:
+**defense:**
 
 128.4   Vikings
 
@@ -401,7 +401,7 @@ defense:
 
 
 
-rbs:
+**rbs:**
 
 97.7500    Steelers
 
