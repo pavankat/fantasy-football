@@ -104,106 +104,42 @@ lower the better for these rankings
 | ***wrs/qbs:***       | ***defense:***           | ***rbs:***  |
 | ------------- |:-------------:| -----:|
 | 141.1500    Colts | 128.4   Vikings | 97.7500    Steelers |  
-| 141.7500    Raiders | 148.4   Bears |
+| 141.7500    Raiders | 148.4   Bears | 102.2000    Saints |
 | 145.9500    Chargers | 149.2   Jaguars |
 | 153.8000    Falcons | 151.2   Lions |
-| 155.3000    Packers | |
-| 169.8000    Browns | |
-| 171.0000    Bengals | |
-| 174.8000    Steelers | |
-| 175.6000    49ers | |
-| 177.4500    Cowboys |
-| 194.4500    Buccaneers |
-| 197.4000    Lions |
-| 199.0500    Dolphins |
-| 199.2000    Giants |
-| 199.9500    Jets |
-| 200.0500    Titans |
-| 203.9000    Saints |
-| 204.1500    Patriots |
-| 205.2000    Cardinals |
-| 207.7500    Redskins |
-| 211.4000    Chiefs |
-| 211.6000    Seahawks |
-| 225.4000    Rams |
-| 235.8000    Broncos |
-| 238.1500    Bears |
-| 242.8000    Ravens |
-| 244.0000    Texans |
-| 246.1000    Eagles |
-| 251.6500    Panthers |
-| 267.3500    Vikings |
-| 268.5000    Bills |
-| 271.7000    Jaguars |
-
-**defense:**
-
-
-
-
-153.6   Broncos
-
-156.0   Texans
-
-164.2   Chiefs
-
-167.0   Rams
-
-173.2   Ravens
-
-174.8   Packers
-
-179.6   Eagles
-
-180.4   Titans
-
-181.2   Panthers
-
-187.4   Falcons
-
-189.4   Patriots
-
-190.4   Chargers
-
-191.2   Redskins
-
-194.0   Raiders
-
-196.0   Bills
-
-200.6   Steelers
-
-204.4   Saints
-
-205.2   Buccaneers
-
-207.0   Browns
-
-211.4   Giants
-
-213.2   Colts
-
-214.4   Cardinals
-
-214.8   Bengals
-
-220.4   Jets
-
-223.2   Seahawks
-
-239.8   49ers
-
-241.2   Cowboys
-
-242.0   Dolphins
-
+| 155.3000    Packers | 153.6   Broncos |
+| 169.8000    Browns | 156.0   Texans |
+| 171.0000    Bengals | 164.2   Chiefs |
+| 174.8000    Steelers | 167.0   Rams |
+| 175.6000    49ers | 173.2   Ravens |
+| 177.4500    Cowboys | 174.8   Packers |
+| 194.4500    Buccaneers | 179.6   Eagles |
+| 197.4000    Lions | 180.4   Titans |
+| 199.0500    Dolphins | 181.2   Panthers |
+| 199.2000    Giants | 187.4   Falcons |
+| 199.9500    Jets | 189.4   Patriots |
+| 200.0500    Titans | 190.4   Chargers |
+| 203.9000    Saints | 191.2   Redskins |
+| 204.1500    Patriots | 194.0   Raiders |
+| 205.2000    Cardinals | 196.0   Bills |
+| 207.7500    Redskins | 200.6   Steelers |
+| 211.4000    Chiefs | 204.4   Saints |
+| 211.6000    Seahawks | 205.2   Buccaneers |
+| 225.4000    Rams | 207.0   Browns |
+| 235.8000    Broncos | 211.4   Giants |
+| 238.1500    Bears | 213.2   Colts |
+| 242.8000    Ravens | 214.4   Cardinals |
+| 244.0000    Texans | 214.8   Bengals |
+| 246.1000    Eagles | 220.4   Jets |
+| 251.6500    Panthers | 223.2   Seahawks |
+| 267.3500    Vikings | 239.8   49ers |
+| 268.5000    Bills | 241.2   Cowboys |
+| 271.7000    Jaguars | 242.0   Dolphins |
 
 
 **rbs:**
 
   
-
-| 102.2000    Saints |  
 
 | 128.5625    Eagles |  
 
