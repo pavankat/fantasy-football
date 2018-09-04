@@ -105,104 +105,36 @@ lower the better for these rankings
 | ------------- |:-------------:| -----:|
 | 141.1500    Colts | 128.4   Vikings | 97.7500    Steelers |  
 | 141.7500    Raiders | 148.4   Bears | 102.2000    Saints |
-| 145.9500    Chargers | 149.2   Jaguars |
-| 153.8000    Falcons | 151.2   Lions |
-| 155.3000    Packers | 153.6   Broncos |
-| 169.8000    Browns | 156.0   Texans |
-| 171.0000    Bengals | 164.2   Chiefs |
-| 174.8000    Steelers | 167.0   Rams |
-| 175.6000    49ers | 173.2   Ravens |
-| 177.4500    Cowboys | 174.8   Packers |
-| 194.4500    Buccaneers | 179.6   Eagles |
-| 197.4000    Lions | 180.4   Titans |
-| 199.0500    Dolphins | 181.2   Panthers |
-| 199.2000    Giants | 187.4   Falcons |
-| 199.9500    Jets | 189.4   Patriots |
-| 200.0500    Titans | 190.4   Chargers |
-| 203.9000    Saints | 191.2   Redskins |
-| 204.1500    Patriots | 194.0   Raiders |
-| 205.2000    Cardinals | 196.0   Bills |
-| 207.7500    Redskins | 200.6   Steelers |
-| 211.4000    Chiefs | 204.4   Saints |
-| 211.6000    Seahawks | 205.2   Buccaneers |
-| 225.4000    Rams | 207.0   Browns |
-| 235.8000    Broncos | 211.4   Giants |
-| 238.1500    Bears | 213.2   Colts |
-| 242.8000    Ravens | 214.4   Cardinals |
-| 244.0000    Texans | 214.8   Bengals |
-| 246.1000    Eagles | 220.4   Jets |
-| 251.6500    Panthers | 223.2   Seahawks |
-| 267.3500    Vikings | 239.8   49ers |
-| 268.5000    Bills | 241.2   Cowboys |
-| 271.7000    Jaguars | 242.0   Dolphins |
-
-
-**rbs:**
-
-  
-
-| 128.5625    Eagles |  
-
-| 128.8875    Falcons | | |  
-
-| 149.6000    Rams | | |  
-
-| 160.9125    Packers | | |  
-
-| 162.3250    Lions | | |  
-
-| 167.6625    Raiders | | |  
-
-| 170.4125    Titans | | |  
-
-| 180.3375    Patriots | | |  
-
-| 183.6250    Jaguars | | |  
-
-| 183.8500    Chargers | | |  
-
-| 201.0500    Ravens | | |  
-
-| 201.1750    Cowboys | | |  
-
-| 209.3875    Colts | | |  
-
-| 210.1250    Vikings | | |  
-
-| 219.5125    Bears | | |  
-
-| 221.1875    Redskins | | |  
-
-| 223.8000    Bengals | | |  
-
-| 225.3000    Broncos | | |  
-
-| 226.3500    Cardinals | | |  
-
-| 233.9000    49ers | | |  
-
-| 235.0625    Panthers | | |  
-
-| 241.9500    Browns | | |  
-
-| 244.3750    Texans | | |  
-
-| 244.7000    Seahawks | | |  
-
-| 254.2500    Giants | | |  
-
-| 260.5000    Chiefs | | |  
-
-| 273.5750    Buccaneers | | |  
-
-| 292.7125    Dolphins | | |  
-
-| 307.5750    Bills | | |  
-
-| 310.4000    Jets | | |  
-
-
-
+| 145.9500    Chargers | 149.2   Jaguars | 128.5625    Eagles |
+| 153.8000    Falcons | 151.2   Lions | 128.8875    Falcons |
+| 155.3000    Packers | 153.6   Broncos | 149.6000    Rams |
+| 169.8000    Browns | 156.0   Texans | 160.9125    Packers |
+| 171.0000    Bengals | 164.2   Chiefs | 162.3250    Lions |
+| 174.8000    Steelers | 167.0   Rams | 167.6625    Raiders |
+| 175.6000    49ers | 173.2   Ravens | 170.4125    Titans |
+| 177.4500    Cowboys | 174.8   Packers | 180.3375    Patriots |
+| 194.4500    Buccaneers | 179.6   Eagles | 183.6250    Jaguars |
+| 197.4000    Lions | 180.4   Titans | 183.8500    Chargers |
+| 199.0500    Dolphins | 181.2   Panthers | 201.0500    Ravens |
+| 199.2000    Giants | 187.4   Falcons | 201.1750    Cowboys |
+| 199.9500    Jets | 189.4   Patriots | 209.3875    Colts |
+| 200.0500    Titans | 190.4   Chargers | 210.1250    Vikings |
+| 203.9000    Saints | 191.2   Redskins | 219.5125    Bears |
+| 204.1500    Patriots | 194.0   Raiders | 221.1875    Redskins |
+| 205.2000    Cardinals | 196.0   Bills | 223.8000    Bengals |
+| 207.7500    Redskins | 200.6   Steelers | 225.3000    Broncos |
+| 211.4000    Chiefs | 204.4   Saints | 226.3500    Cardinals |
+| 211.6000    Seahawks | 205.2   Buccaneers | 233.9000    49ers |
+| 225.4000    Rams | 207.0   Browns | 235.0625    Panthers |
+| 235.8000    Broncos | 211.4   Giants | 241.9500    Browns |
+| 238.1500    Bears | 213.2   Colts | 244.3750    Texans |
+| 242.8000    Ravens | 214.4   Cardinals | 244.7000    Seahawks |
+| 244.0000    Texans | 214.8   Bengals | 254.2500    Giants |
+| 246.1000    Eagles | 220.4   Jets | 260.5000    Chiefs |
+| 251.6500    Panthers | 223.2   Seahawks | 273.5750    Buccaneers |
+| 267.3500    Vikings | 239.8   49ers | 292.7125    Dolphins |
+| 268.5000    Bills | 241.2   Cowboys | 307.5750    Bills |
+| 271.7000    Jaguars | 242.0   Dolphins | 310.4000    Jets |
 
 ### 8-26-18:
 
